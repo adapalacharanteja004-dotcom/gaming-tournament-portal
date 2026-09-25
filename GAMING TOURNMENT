@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GameArena | Gaming Tournament Portal</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        <span>⚡</span> GAME<span>ARENA</span>
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#tournaments">Tournaments</a>
+        <a href="#matches">Matches</a>
+        <a href="#leaderboard">Leaderboard</a>
+        <a href="#teams">Teams</a>
+        <a href="#about">About</a>
+    </nav>
+
+    <div class="nav-actions">
+        <button class="notification-btn" onclick="showNotifications()">
+            🔔 <span id="notificationCount">3</span>
+        </button>
+
+        <button class="login-btn" onclick="openLogin()">
+            Login
+        </button>
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="live-badge">
+            🔴 LIVE TOURNAMENTS
+        </div>
+
+        <h1>
+            DOMINATE THE
+            <span>ARENA</span>
+        </h1>
+
+        <p>
+            Join the ultimate gaming tournament platform.
+            Compete with players, build your team and become a champion.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#tournaments" class="primary-btn">
+                🏆 Explore Tournaments
+            </a>
+
+            <button class="secondary-btn" onclick="openRegister()">
+                👤 Create Account
+            </button>
+        </div>
+
+        <div class="hero-stats">
+
+            <div>
+                <strong>12K+</strong>
+                <span>Players</span>
+            </div>
+
+            <div>
+                <strong>850+</strong>
+                <span>Tournaments</span>
+            </div>
+
+            <div>
+                <strong>₹25L+</strong>
+                <span>Prize Pool</span>
+            </div>
+
+            <div>
+                <strong>150+</strong>
+                <span>Teams</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LIVE MATCH ================= -->
+
+<section class="live-section">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-label">LIVE NOW</span>
+            <h2>🔥 Live Matches</h2>
+        </div>
+
+        <a href="#matches">View All →</a>
+
+    </div>
+
+    <div class="live-grid">
+
+        <div class="live-card">
+
+            <div class="live-top">
+                <span class="live-status">● LIVE</span>
+                <span>Round 3</span>
+            </div>
+
+            <h3>Valorant Masters</h3>
+
+            <div class="teams">
+
+                <div class="team">
+                    <div class="team-logo red">🔥</div>
+                    <p>Fire Dragons</p>
+                    <strong>12</strong>
+                </div>
+
+                <div class="vs">VS</div>
+
+                <div class="team">
+                    <div class="team-logo blue">⚡</div>
+                    <p>Storm X</p>
+                    <strong>9</strong>
+                </div>
+
+            </div>
+
+            <button onclick="watchMatch('Valorant Masters')">
+                ▶ Watch Live
+            </button>
+
+        </div>
+
+
+        <div class="live-card">
+
+            <div class="live-top">
+                <span class="live-status">● LIVE</span>
+                <span>Final</span>
+            </div>
+
+            <h3>BGMI Championship</h3>
+
+            <div class="teams">
+
+                <div class="team">
+                    <div class="team-logo yellow">👑</div>
+                    <p>Royal Kings</p>
+                    <strong>18</strong>
+                </div>
+
+                <div class="vs">VS</div>
+
+                <div class="team">
+                    <div class="team-logo purple">☠️</div>
+                    <p>Dark Wolves</p>
+                    <strong>16</strong>
+                </div>
+
+            </div>
+
+            <button onclick="watchMatch('BGMI Championship')">
+                ▶ Watch Live
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TOURNAMENTS ================= -->
+
+<section class="section" id="tournaments">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-label">COMPETE & WIN</span>
+            <h2>🏆 Tournaments</h2>
+        </div>
+
+    </div>
+
+
+    <!-- Search -->
+
+    <div class="filter-bar">
+
+        <input
+            type="text"
+            id="searchTournament"
+            placeholder="🔎 Search tournament..."
+            onkeyup="filterTournaments()"
+        >
+
+        <select id="gameFilter" onchange="filterTournaments()">
+
+            <option value="all">All Games</option>
+            <option value="BGMI">BGMI</option>
+            <option value="Valorant">Valorant</option>
+            <option value="Free Fire">Free Fire</option>
+            <option value="PUBG">PUBG</option>
+
+        </select>
+
+        <select id="statusFilter" onchange="filterTournaments()">
+
+            <option value="all">All Status</option>
+            <option value="open">Registration Open</option>
+            <option value="upcoming">Upcoming</option>
+
+        </select>
+
+    </div>
+
+
+    <div class="tournament-grid" id="tournamentGrid">
+
+
+        <!-- Tournament 1 -->
+
+        <div class="tournament-card"
+             data-game="BGMI"
+             data-status="open">
+
+            <div class="game-image bgmi">
+
+                <span class="game-tag">BGMI</span>
+
+                <span class="open-tag">
+                    ● Registration Open
+                </span>
+
+            </div>
+
+            <div class="tournament-content">
+
+                <h3>BGMI India Championship</h3>
+
+                <p class="organizer">
+                    🎮 Organized by GameArena
+                </p>
+
+                <div class="tournament-info">
+
+                    <div>
+                        <span>Prize Pool</span>
+                        <strong>₹5,00,000</strong>
+                    </div>
+
+                    <div>
+                        <span>Teams</span>
+                        <strong>128</strong>
+                    </div>
+
+                </div>
+
+                <div class="tournament-date">
+                    📅 15 October 2026
+                </div>
+
+                <button
+                    class="register-btn"
+                    onclick="registerTournament('BGMI India Championship')">
+
+                    Register Now →
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Tournament 2 -->
+
+        <div class="tournament-card"
+             data-game="Valorant"
+             data-status="open">
+
+            <div class="game-image valorant">
+
+                <span class="game-tag">VALORANT</span>
+
+                <span class="open-tag">
+                    ● Registration Open
+                </span>
+
+            </div>
+
+            <div class="tournament-content">
+
+                <h3>Valorant Masters India</h3>
+
+                <p class="organizer">
+                    🎮 Organized by GameArena
+                </p>
+
+                <div class="tournament-info">
+
+                    <div>
+                        <span>Prize Pool</span>
+                        <strong>₹3,00,000</strong>
+                    </div>
+
+                    <div>
+                        <span>Teams</span>
+                        <strong>64</strong>
+                    </div>
+
+                </div>
+
+                <div class="tournament-date">
+                    📅 20 October 2026
+                </div>
+
+                <button
+                    class="register-btn"
+                    onclick="registerTournament('Valorant Masters India')">
+
+                    Register Now →
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Tournament 3 -->
+
+        <div class="tournament-card"
+             data-game="Free Fire"
+             data-status="upcoming">
+
+            <div class="game-image freefire">
+
+                <span class="game-tag">FREE FIRE</span>
+
+                <span class="upcoming-tag">
+                    Upcoming
+                </span>
+
+            </div>
+
+            <div class="tournament-content">
+
+                <h3>Free Fire Battle Royale</h3>
+
+                <p class="organizer">
+                    🎮 Organized by GameArena
+                </p>
+
+                <div class="tournament-info">
+
+                    <div>
+                        <span>Prize Pool</span>
+                        <strong>₹2,00,000</strong>
+                    </div>
+
+                    <div>
+                        <span>Teams</span>
+                        <strong>100</strong>
+                    </div>
+
+                </div>
+
+                <div class="tournament-date">
+                    📅 25 October 2026
+                </div>
+
+                <button
+                    class="register-btn"
+                    onclick="registerTournament('Free Fire Battle Royale')">
+
+                    Register Now →
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Tournament 4 -->
+
+        <div class="tournament-card"
+             data-game="PUBG"
+             data-status="open">
+
+            <div class="game-image pubg">
+
+                <span class="game-tag">PUBG</span>
+
+                <span class="open-tag">
+                    ● Registration Open
+                </span>
+
+            </div>
+
+            <div class="tournament-content">
+
+                <h3>PUBG Pro League</h3>
+
+                <p class="organizer">
+                    🎮 Organized by GameArena
+                </p>
+
+                <div class="tournament-info">
+
+                    <div>
+                        <span>Prize Pool</span>
+                        <strong>₹7,50,000</strong>
+                    </div>
+
+                    <div>
+                        <span>Teams</span>
+                        <strong>80</strong>
+                    </div>
+
+                </div>
+
+                <div class="tournament-date">
+                    📅 30 October 2026
+                </div>
+
+                <button
+                    class="register-btn"
+                    onclick="registerTournament('PUBG Pro League')">
+
+                    Register Now →
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MATCH SCHEDULE ================= -->
+
+<section class="section dark-section" id="matches">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-label">SCHEDULE</span>
+            <h2>📅 Match Schedule</h2>
+        </div>
+
+    </div>
+
+
+    <div class="schedule">
+
+        <div class="schedule-row">
+
+            <div class="date">
+                <strong>15</strong>
+                <span>OCT</span>
+            </div>
+
+            <div class="match-info">
+
+                <span class="game-name">BGMI</span>
+
+                <h3>Royal Kings <b>VS</b> Dark Wolves</h3>
+
+                <p>Quarter Final • 7:00 PM</p>
+
+            </div>
+
+            <span class="match-status upcoming">
+                Upcoming
+            </span>
+
+        </div>
+
+
+        <div class="schedule-row">
+
+            <div class="date">
+                <strong>18</strong>
+                <span>OCT</span>
+            </div>
+
+            <div class="match-info">
+
+                <span class="game-name">Valorant</span>
+
+                <h3>Fire Dragons <b>VS</b> Storm X</h3>
+
+                <p>Semi Final • 8:00 PM</p>
+
+            </div>
+
+            <span class="match-status upcoming">
+                Upcoming
+            </span>
+
+        </div>
+
+
+        <div class="schedule-row">
+
+            <div class="date">
+                <strong>20</strong>
+                <span>OCT</span>
+            </div>
+
+            <div class="match-info">
+
+                <span class="game-name">Free Fire</span>
+
+                <h3>Shadow Squad <b>VS</b> Alpha Gaming</h3>
+
+                <p>Final • 9:00 PM</p>
+
+            </div>
+
+            <span class="match-status upcoming">
+                Upcoming
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LEADERBOARD ================= -->
+
+<section class="section" id="leaderboard">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-label">TOP PLAYERS</span>
+            <h2>🏅 Leaderboard</h2>
+        </div>
+
+    </div>
+
+
+    <div class="leaderboard-container">
+
+        <div class="leaderboard-header">
+
+            <span>Rank</span>
+            <span>Player / Team</span>
+            <span>Matches</span>
+            <span>Wins</span>
+            <span>Points</span>
+
+        </div>
+
+
+        <div class="leader-row">
+
+            <span class="rank gold">01</span>
+
+            <div class="player">
+                <div class="avatar">👑</div>
+
+                <div>
+                    <strong>ShadowKing</strong>
+                    <small>Royal Kings</small>
+                </div>
+            </div>
+
+            <span>48</span>
+            <span>39</span>
+            <strong class="points">2,840</strong>
+
+        </div>
+
+
+        <div class="leader-row">
+
+            <span class="rank silver">02</span>
+
+            <div class="player">
+                <div class="avatar">🔥</div>
+
+                <div>
+                    <strong>FireX</strong>
+                    <small>Fire Dragons</small>
+                </div>
+            </div>
+
+            <span>45</span>
+            <span>36</span>
+            <strong class="points">2,650</strong>
+
+        </div>
+
+
+        <div class="leader-row">
+
+            <span class="rank bronze">03</span>
+
+            <div class="player">
+                <div class="avatar">⚡</div>
+
+                <div>
+                    <strong>StormBoy</strong>
+                    <small>Storm X</small>
+                </div>
+            </div>
+
+            <span>44</span>
+            <span>34</span>
+            <strong class="points">2,430</strong>
+
+        </div>
+
+
+        <div class="leader-row">
+
+            <span class="rank">04</span>
+
+            <div class="player">
+                <div class="avatar">☠️</div>
+
+                <div>
+                    <strong>DarkHunter</strong>
+                    <small>Dark Wolves</small>
+                </div>
+            </div>
+
+            <span>40</span>
+            <span>31</span>
+            <strong class="points">2,210</strong>
+
+        </div>
+
+
+        <div class="leader-row">
+
+            <span class="rank">05</span>
+
+            <div class="player">
+                <div class="avatar">🎯</div>
+
+                <div>
+                    <strong>SniperPro</strong>
+                    <small>Alpha Gaming</small>
+                </div>
+            </div>
+
+            <span>39</span>
+            <span>28</span>
+            <strong class="points">2,050</strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TEAMS ================= -->
+
+<section class="section dark-section" id="teams">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-label">ESPORTS TEAMS</span>
+            <h2>👥 Top Teams</h2>
+        </div>
+
+        <button class="create-team" onclick="createTeam()">
+            + Create Team
+        </button>
+
+    </div>
+
+
+    <div class="team-grid">
+
+        <div class="team-card">
+
+            <div class="big-team-logo">👑</div>
+
+            <h3>Royal Kings</h3>
+
+            <p>BGMI • India</p>
+
+            <div class="team-stats">
+                <span>🏆 24 Wins</span>
+                <span>⭐ 92% Win Rate</span>
+            </div>
+
+            <button onclick="viewTeam('Royal Kings')">
+                View Team
+            </button>
+
+        </div>
+
+
+        <div class="team-card">
+
+            <div class="big-team-logo">🔥</div>
+
+            <h3>Fire Dragons</h3>
+
+            <p>Valorant • India</p>
+
+            <div class="team-stats">
+                <span>🏆 21 Wins</span>
+                <span>⭐ 88% Win Rate</span>
+            </div>
+
+            <button onclick="viewTeam('Fire Dragons')">
+                View Team
+            </button>
+
+        </div>
+
+
+        <div class="team-card">
+
+            <div class="big-team-logo">⚡</div>
+
+            <h3>Storm X</h3>
+
+            <p>Valorant • India</p>
+
+            <div class="team-stats">
+                <span>🏆 19 Wins</span>
+                <span>⭐ 84% Win Rate</span>
+            </div>
+
+            <button onclick="viewTeam('Storm X')">
+                View Team
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="section" id="about">
+
+    <div class="section-heading center">
+
+        <div>
+
+            <span class="section-label">WHY GAMEARENA?</span>
+
+            <h2>🚀 Platform Features</h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="features-grid">
+
+        <div class="feature-card">
+            <span>🏆</span>
+            <h3>Competitive Tournaments</h3>
+            <p>Join competitive gaming tournaments and fight for massive prize pools.</p>
+        </div>
+
+        <div class="feature-card">
+            <span>👥</span>
+            <h3>Team Management</h3>
+            <p>Create teams, invite players and manage your esports squad.</p>
+        </div>
+
+        <div class="feature-card">
+            <span>📊</span>
+            <h3>Live Leaderboards</h3>
+            <p>Track rankings, points, wins and tournament statistics.</p>
+        </div>
+
+        <div class="feature-card">
+            <span>🔴</span>
+            <h3>Live Matches</h3>
+            <p>Watch ongoing matches and follow live tournament updates.</p>
+        </div>
+
+        <div class="feature-card">
+            <span>💰</span>
+            <h3>Prize Distribution</h3>
+            <p>Track tournament prize pools and winning teams.</p>
+        </div>
+
+        <div class="feature-card">
+            <span>🔔</span>
+            <h3>Notifications</h3>
+            <p>Receive important tournament and match announcements.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <div class="logo">
+                ⚡ GAME<span>ARENA</span>
+            </div>
+
+            <p>
+                The ultimate gaming tournament platform
+                for competitive players.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>Platform</h3>
+
+            <a href="#tournaments">Tournaments</a>
+            <a href="#matches">Matches</a>
+            <a href="#leaderboard">Leaderboard</a>
+            <a href="#teams">Teams</a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Support</h3>
+
+            <a href="#">Help Center</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Rules</a>
+            <a href="#">Privacy Policy</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+        © 2026 GameArena. All Rights Reserved.
+    </div>
+
+</footer>
+
+
+<!-- ================= LOGIN MODAL ================= -->
+
+<div class="modal" id="loginModal">
+
+    <div class="modal-box">
+
+        <button class="close" onclick="closeLogin()">×</button>
+
+        <div class="modal-icon">🎮</div>
+
+        <h2>Welcome Back</h2>
+
+        <p>Login to your GameArena account</p>
+
+        <input
+            type="email"
+            id="loginEmail"
+            placeholder="Email Address"
+        >
+
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Password"
+        >
+
+        <button class="modal-btn" onclick="login()">
+            Login
+        </button>
+
+        <p class="switch">
+            Don't have an account?
+            <a href="#" onclick="switchToRegister()">Register</a>
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ================= REGISTER MODAL ================= -->
+
+<div class="modal" id="registerModal">
+
+    <div class="modal-box">
+
+        <button class="close" onclick="closeRegister()">×</button>
+
+        <div class="modal-icon">🚀</div>
+
+        <h2>Create Account</h2>
+
+        <p>Join thousands of competitive players</p>
+
+        <input
+            type="text"
+            id="registerName"
+            placeholder="Full Name"
+        >
+
+        <input
+            type="email"
+            id="registerEmail"
+            placeholder="Email Address"
+        >
+
+        <input
+            type="password"
+            id="registerPassword"
+            placeholder="Create Password"
+        >
+
+        <button class="modal-btn" onclick="registerUser()">
+            Create Account
+        </button>
+
+        <p class="switch">
+            Already have an account?
+            <a href="#" onclick="switchToLogin()">Login</a>
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ================= NOTIFICATION PANEL ================= -->
+
+<div class="notification-panel" id="notificationPanel">
+
+    <div class="notification-header">
+
+        <h3>🔔 Notifications</h3>
+
+        <button onclick="closeNotifications()">×</button>
+
+    </div>
+
+    <div class="notification">
+
+        <span>🏆</span>
+
+        <div>
+            <strong>Tournament Registration</strong>
+            <p>BGMI Championship registration is now open.</p>
+        </div>
+
+    </div>
+
+    <div class="notification">
+
+        <span>🔴</span>
+
+        <div>
+            <strong>Live Match</strong>
+            <p>Valorant Masters is currently live.</p>
+        </div>
+
+    </div>
+
+    <div class="notification">
+
+        <span>🎁</span>
+
+        <div>
+            <strong>Prize Update</strong>
+            <p>New ₹5,00,000 prize pool tournament added.</p>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="script.js"></script>
+
+</body>
+</html>
